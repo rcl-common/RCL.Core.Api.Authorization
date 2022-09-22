@@ -7,7 +7,7 @@ namespace Microsoft.Extensions.DependencyInjection
     {
         public static IServiceCollection AddRCLCoreApiAuthorizationServices(this IServiceCollection services, Action<ApiAuthorizationOptions> setupAction)
         {
-            services.TryAddTransient<IClientCredentialsAuthorizationService, ClientCredentialsAuthorizationService>();
+            services.TryAddTransient<IApiAuthorizationService, ApiAuthorizationService>();
             services.Configure(setupAction);
 
             return services;

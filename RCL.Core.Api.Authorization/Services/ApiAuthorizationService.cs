@@ -3,16 +3,16 @@ using Microsoft.Extensions.Options;
 
 namespace RCL.Core.Api.Authorization
 {
-    internal class ClientCredentialsAuthorizationService : IClientCredentialsAuthorizationService
+    internal class ApiAuthorizationService : IApiAuthorizationService
     {
         private readonly IOptions<ApiAuthorizationOptions> _options;
 
-        public ClientCredentialsAuthorizationService(IOptions<ApiAuthorizationOptions> options)
+        public ApiAuthorizationService(IOptions<ApiAuthorizationOptions> options)
         {
             _options = options;
         }
 
-        public bool IsAuthorized(HttpRequestData req)
+        public bool IsClientAuthorized(HttpRequestData req)
         {
             bool b = false;
 
@@ -34,6 +34,25 @@ namespace RCL.Core.Api.Authorization
                         }
                     }
                 }
+            }
+
+            return b;
+        }
+
+        public bool IsSecurityKeyAuthorized(HttpRequestData req, string keyName)
+        {
+            bool b = false;
+
+            var headers = req.Headers;
+            string securityKey = string.Empty;
+            if (headers.TryGetValues(keyName, out var keys))
+            {
+                securityKey = keys?.FirstOrDefault() ?? string.Empty;
+            }
+
+            if(securityKey == _options?.Value?.securityKey)
+            {
+                b = true;
             }
 
             return b;
