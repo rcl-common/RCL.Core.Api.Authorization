@@ -1,8 +1,5 @@
 ﻿#nullable disable
 
-using RCL.Core.Api.Authorization.Abstractions;
-using RCL.Core.Api.Authorization.Factory;
-
 namespace RCL.Core.Api.Authorization
 {
     internal class AuthorizationFactory : IAuthorizationFactory
@@ -26,12 +23,5 @@ namespace RCL.Core.Api.Authorization
                 return null;
             }
         }
-    }
-
-    public enum AuthType
-    {
-        ClientCredentials,
-        SecretKey,
-        BasicAuth
     }
 }

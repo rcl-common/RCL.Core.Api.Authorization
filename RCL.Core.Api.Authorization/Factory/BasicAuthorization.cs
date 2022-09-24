@@ -1,7 +1,7 @@
 ﻿using Microsoft.Azure.Functions.Worker.Http;
 using System.Text;
 
-namespace RCL.Core.Api.Authorization.Factory
+namespace RCL.Core.Api.Authorization
 {
     internal class BasicAuthorization : IApiAuthorization
     {

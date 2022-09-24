@@ -1,6 +1,5 @@
 ﻿using Microsoft.Extensions.DependencyInjection.Extensions;
 using RCL.Core.Api.Authorization;
-using RCL.Core.Api.Authorization.Abstractions;
 
 namespace Microsoft.Extensions.DependencyInjection
 {

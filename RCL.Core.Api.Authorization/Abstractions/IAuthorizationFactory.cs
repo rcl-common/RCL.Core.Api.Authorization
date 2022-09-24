@@ -1,4 +1,4 @@
-﻿namespace RCL.Core.Api.Authorization.Abstractions
+﻿namespace RCL.Core.Api.Authorization
 {
     public interface IAuthorizationFactory
     {
